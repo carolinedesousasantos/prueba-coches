@@ -1,8 +1,7 @@
 package com.kettal.cars.controller;
 
 import com.kettal.cars.dto.CarsDto;
-import com.kettal.cars.dto.form.FormCreateCar;
-import com.kettal.cars.dto.form.FormUpdateCar;
+import com.kettal.cars.dto.form.FormCar;
 import com.kettal.cars.exceptions.*;
 import com.kettal.cars.model.Cars;
 import com.kettal.cars.service.CarsService;
@@ -22,7 +21,7 @@ public class CarsController {
 
   @PostMapping
   public ResponseEntity<CarsDto> create(
-      @RequestBody @Valid FormCreateCar form, UriComponentsBuilder uriBuilder)
+          @RequestBody @Valid FormCar form, UriComponentsBuilder uriBuilder)
       throws DateNotAcceptableException, ColorNotAcceptableException, PriceExceededException,
           QuantityExceededException {
     Cars carSaved = service.create(form);
@@ -43,7 +42,7 @@ public class CarsController {
 
   @PutMapping(value = "/{id}")
   public ResponseEntity<CarsDto> update(
-      @PathVariable Long id, @RequestBody @Valid FormUpdateCar form)
+      @PathVariable Long id, @RequestBody @Valid FormCar form)
       throws CarNotFoundException, PriceExceededException, ColorNotAcceptableException,
           QuantityExceededException {
     Cars carUpdated = service.update(id, form);

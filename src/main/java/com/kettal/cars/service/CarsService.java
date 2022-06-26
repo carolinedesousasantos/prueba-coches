@@ -1,8 +1,7 @@
 package com.kettal.cars.service;
 
 import com.kettal.cars.dto.CarsDto;
-import com.kettal.cars.dto.form.FormCreateCar;
-import com.kettal.cars.dto.form.FormUpdateCar;
+import com.kettal.cars.dto.form.FormCar;
 import com.kettal.cars.exceptions.*;
 import com.kettal.cars.model.Cars;
 import com.kettal.cars.model.Colors;
@@ -28,13 +27,12 @@ public class CarsService {
     Optional<Cars> car = repository.findById(id);
     if (car.isPresent()) {
       return new CarsDto(car.get());
-
     } else {
       throw new CarNotFoundException();
     }
   }
 
-  public Cars create(FormCreateCar form)
+  public Cars create(FormCar form)
       throws DateNotAcceptableException, ColorNotAcceptableException, PriceExceededException,
           QuantityExceededException {
     LocalDateTime now = LocalDateTime.now();
@@ -71,7 +69,7 @@ public class CarsService {
     return repository.save(car);
   }
 
-  public Cars update(Long id, FormUpdateCar form)
+  public Cars update(Long id, FormCar form)
       throws CarNotFoundException, ColorNotAcceptableException, PriceExceededException,
           QuantityExceededException {
     Optional<Cars> optionalCar = repository.findById(id);
