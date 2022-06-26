@@ -6,6 +6,7 @@ import com.kettal.cars.exceptions.*;
 import com.kettal.cars.model.Cars;
 import com.kettal.cars.model.Colors;
 import com.kettal.cars.repository.CarsRepository;
+
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
@@ -100,6 +101,16 @@ public class CarsService {
     if (car.isPresent()) {
       repository.delete(car.get());
     } else {
+      throw new CarNotFoundException();
+    }
+  }
+
+  public Cars updateDisponible(Long id, boolean disponible) throws CarNotFoundException {
+    Optional<Cars> optionalCar = repository.findById(id);
+    if (optionalCar.isPresent()) {
+      optionalCar.get().setDisponible(disponible);
+      return optionalCar.get();
+    }else{
       throw new CarNotFoundException();
     }
   }

@@ -49,6 +49,14 @@ public class CarsController {
     return ResponseEntity.ok(new CarsDto(carUpdated));
   }
 
+  @PutMapping(value = "disponible/{id}/{disponible}")
+  public ResponseEntity<CarsDto> updateDisponible(
+          @PathVariable Long id,  @PathVariable boolean disponible)
+          throws CarNotFoundException{
+    Cars carUpdated = service.updateDisponible(id, disponible);
+    return ResponseEntity.ok(new CarsDto(carUpdated));
+  }
+
   @DeleteMapping("/{id}")
   public ResponseEntity<CarsDto> delete(@PathVariable Long id) throws CarNotFoundException {
     service.delete(id);
