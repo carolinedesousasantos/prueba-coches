@@ -15,3 +15,6 @@ WORKDIR /opt/app
 COPY --from=maven /usr/src/app/target/${JAR_FILE} /opt/app/app.jar
 EXPOSE 8080
 ENTRYPOINT ["java","-jar","app.jar"]
+
+# docker build . -t carolinedesousa/prueba-coches-back:latest
+# docker push carolinedesousa/prueba-coches-back:latest

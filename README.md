@@ -12,24 +12,35 @@ Spring Boot application
 ## Clone
 
 ```
-   git clone https://github.com/carolinedesousasantos/prueba-coches.git
+git clone https://github.com/carolinedesousasantos/prueba-coches.git
 ```
 
 ## Go into folder
 
 ```
-   cd prueba-coches
+cd prueba-coches
 ```
 
 ## Execute
 
 ```
-   mvn spring-boot:run
+mvn spring-boot:run
  ```
 
-## Open the link on browser
+## To see api documentation
 
    [http://localhost:8080/swagger-ui/index.html](http://localhost:8080/swagger-ui/index.html)
+
+
+## H2 database
+
+[http://localhost:8080/h2-console](http://localhost:8080/h2-console)
+
+username=sa
+
+password is empty
+
+![img.png](doc/h2-console.png)
 
 
 
